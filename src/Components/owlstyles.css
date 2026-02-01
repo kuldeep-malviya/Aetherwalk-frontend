@@ -1,0 +1,57 @@
+.mySwiper2{
+  background:url(../assets/imgs/Owl_background.webp), rgba(221, 86, 109, 0.39);
+  margin-top:40px;
+}
+.swipe_slide{
+  padding-top: 60px;
+  background:url(../assets/imgs/Owl_background.webp), rgba(221, 86, 109, 0.39);
+  color: white;
+
+}
+.swipe_slide img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  object-fit: cover;
+  display: block;
+}
+.stars{
+  color: gold;
+  font-size: 22px;
+}
+
+.owl_swipe_head{
+  padding-top:40px;
+}
+.owl_swipe_head h1{
+  font-weight: 600;
+  color: #FF6B00;
+}
+.owl_swipe_head p{
+  color: #876969;
+    font-weight: 600;
+}
+
+.owl_heading{
+  position: relative;
+  padding-bottom: 15px
+}
+.owl_heading::before{
+  position: absolute;
+  content: "";
+  background-color: #876969;
+  height: 2px;
+  bottom: 0;
+  right: 32%;
+  left: 30%;
+}
+.owl_heading::after{
+  position: absolute;
+  content: "";
+  background-color: #876969;
+  height: 15px;
+  bottom: -6px;
+  right: 32%;
+  width: 15px;
+  border-radius: 50%;
+}
