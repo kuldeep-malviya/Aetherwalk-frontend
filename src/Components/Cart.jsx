@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartMessage from "./CartMessage";
+import "./cart.css"
 
 
 import {
