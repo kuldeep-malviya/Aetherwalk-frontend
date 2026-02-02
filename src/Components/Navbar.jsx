@@ -5,9 +5,23 @@ import { AppContext } from "../store/AppContext";
 import { FaBarsStaggered, FaXmark, FaCircleUser } from "react-icons/fa6";
 import Navlogo from "../assets/imgs/Store-Logo-removebg-preview.png";
 import "./navbar.css";
+import { getCart } from "../api/cartApi";
 
 const Navbar = () => {
-  const { cart } = useContext(AppContext);
+
+  const [cart, setCart] = useState([])
+  const getdetailsCart = async () => {
+    try {
+      const res = await getCart()
+      setCart(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    getdetailsCart()
+
+  })
   const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -79,8 +93,8 @@ const Navbar = () => {
           </Link>
 
           <Link to="/cart" className="cart-icon">
-            <FaShoppingCart style={{ position: "relative", top: "-8px" }} />
-            {cart.length > 0 && <span>{cart.length}</span>}
+            <FaShoppingCart className="cart-icon-svg" />
+            {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
           </Link>
 
           {/* Mobile menu button */}

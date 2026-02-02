@@ -104,3 +104,31 @@
     text-align: center;
   }
 }
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  color: #333;
+}
+
+.cart-icon-svg {
+  vertical-align: middle;
+}
+
+/* Red badge */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #fff; /* optional for better look */
+}
