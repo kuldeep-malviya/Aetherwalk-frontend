@@ -89,11 +89,11 @@ const Navbar = () => {
         {/* Icons */}
         <div className="nav-icons">
           <Link to="/user">
-            <FaCircleUser style={{ position: "relative", top: "-8px" }} className="icon mx-4" />
+            <FaCircleUser style={{ position: "relative", top: "-10px" ,color:"black",fontSize:"20px"}} className="icon mx-4" />
           </Link>
 
           <Link to="/cart" className="cart-icon">
-            <FaShoppingCart className="cart-icon-svg" />
+            <FaShoppingCart className="cart-icon-svg" style={{ position: "relative", top: "-10px" ,color:"black",fontSize:"22px"}} />
             {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
           </Link>
 

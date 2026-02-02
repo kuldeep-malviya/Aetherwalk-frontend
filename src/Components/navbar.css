@@ -352,3 +352,7 @@ op:px
   position: fixed;
   top: -20px;
 }
+
+.nav-links{
+  font-size: 18px;
+}
