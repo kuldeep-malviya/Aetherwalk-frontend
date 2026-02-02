@@ -9,8 +9,12 @@ const Products = ({ setCartAnime }) => {
   const [productsList, setProducts] = useState([]);
 
   const loadProducts = async () => {
-    const res = await getProducts();
-    setProducts(res.data.data);
+        const res = await getProducts();
+    if (res.data && res.data.data) {
+      setProducts(res.data.data);
+    } else {
+      setProducts([]); // fallback to empty array
+    }
   };
 
   useEffect(() => {
@@ -45,7 +49,7 @@ const Products = ({ setCartAnime }) => {
                     <button
                       onClick={() => {
                         addToCart(item._id);
-                        setCartAnime && setCartAnime(true);
+                        
                       }}
                     >
                       Add to Cart <FaCartPlus className="ms-2" />

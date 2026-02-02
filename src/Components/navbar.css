@@ -1,10 +1,4 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-/* ===== BASE ===== */
+/* 
 .navbar {
   width: 100%;
   position: fixed;
@@ -27,13 +21,11 @@
   justify-content: space-between;
 }
 
-/* Logo */
 .navbar-logo {
   height: 55px;
   object-fit: contain;
 }
 
-/* Nav Links (Desktop) */
 .nav-links {
   list-style: none;
   display: flex;
@@ -52,7 +44,6 @@
   color: #f97316;
 }
 
-/* Icons */
 .nav-icons {
   display: flex;
   align-items: center;
@@ -80,7 +71,6 @@
   border-radius: 50%;
 }
 
-/* Menu Button (Hidden on Desktop) */
 .menu-btn {
   background: none;
   border: none;
@@ -89,14 +79,12 @@
   display: none;
 }
 
-/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
   .menu-btn {
     display: block;
   }
 
-  /* Hide desktop links */
   .nav-links {
     position: fixed;
     top: 70px;
@@ -111,7 +99,6 @@
     transition: 0.4s ease-in-out;
   }
 
-  /* When menu open */
   .nav-links.active {
     left: 0;
   }
@@ -134,7 +121,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1050; /* bootstrap se upar */
+  z-index: 1050; 
   margin: 0 !important;
 }
 
@@ -253,7 +240,6 @@ li{
   font-size: 22px;
 }
 
-/* 🔥 Mobile */
 @media (max-width: 768px) {
   .menu-btn {
     display: block;
@@ -275,4 +261,94 @@ op:px
   .nav-links.active {
     display: flex;
   }
+} */
+
+.navbar {
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.sticky-nav {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Icons */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Mobile menu */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background: #fff;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 100px;
+    transition: 0.3s;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .menu-btn {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-icons {
+    gap: 10px;
+  }
+}
+.nav-logo img {
+  height: 55px;
+}
+
+.navbar{
+  position: fixed;
+  top: -20px;
 }

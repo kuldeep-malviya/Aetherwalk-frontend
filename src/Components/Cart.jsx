@@ -31,7 +31,7 @@ const Cart = () => {
 
 
   return (
-    <div className="text-center " style={{ margin: "100px" }}>
+    <div className="text-center mt-5 " >
       <div className="cart_main">
 
         {validCart.length === 0 ? <CartMessage />

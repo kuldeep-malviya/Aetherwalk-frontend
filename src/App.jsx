@@ -19,6 +19,7 @@ import ProtectedRoute from "./store/ProtectedRoute";
 
 import DataProvider from "./store/AppContext";
 import AuthProvider from "./store/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [CartAnime, setCartAnime] = useState(false);
@@ -38,6 +39,7 @@ function App() {
           {CartAnime && <CartAnimation />}
           <ScrollToTop />
 
+          <ToastContainer  position="top-right"  autoClose={3000} pauseOnHover="true" draggable="true" />
           <Routes>
             {/* ROOT DECIDER */}
             {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
