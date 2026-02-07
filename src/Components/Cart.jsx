@@ -17,7 +17,7 @@ const Cart = () => {
 
   const loadCart = async () => {
     const res = await getCart();
-    setCart(res.data);
+    setCart(res);
   };
 
   const validCart = cart.filter(item => item.productId);
