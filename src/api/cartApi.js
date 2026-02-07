@@ -1,4 +1,4 @@
-import API from "./api";
+import API from "./axios";
 import { toast } from "react-toastify";
 
 export const addToCart = async (productId) => {
