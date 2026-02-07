@@ -1,89 +1,53 @@
 import axios from "axios";
-import { toast } from "react-toastify";
 
-// Axios instance
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-});
+const token = localStorage.getItem("token");
 
-// Always get fresh token
-const authHeader = () => ({
+const authHeader = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    Authorization: `Bearer ${token}`,
   },
-});
-
-// 🔴 Central error handler
-const handleError = (error, defaultMessage) => {
-  const message =
-    error.response?.data?.message || defaultMessage || "Something went wrong";
-  toast.error(message);
-  throw error;
 };
 
 // 🛒 Add item to cart
 export const addToCart = async (productId) => {
-  try {
-    const res = await api.post(
-      "/cart/add",
-      { productId },
-      authHeader()
-    );
-    toast.success("Item added to cart");
-    return res.data;
-  } catch (error) {
-    handleError(error, "Failed to add item to cart");
-  }
+ const res =   await axios.post(`${import.meta.env.VITE_API_URL}/cart/add`, {
+    productId,
+    quantity: 1,
+    
+  },
+authHeader);
+if(res.status === 200){
+  toast.success("item successfully add in cart")
+}
+return res
 };
 
-// 📦 Get user cart
+// Existing functions
 export const getCart = async () => {
-  try {
-    const res = await api.get("/cart", authHeader());
-    return res.data;
-  } catch (error) {
-    handleError(error, "Failed to load cart");
-  }
+  return await axios.get(`${import.meta.env.VITE_API_URL}/cart`,
+    authHeader,
+  );
 };
 
 // ➕ Increase quantity
 export const increaseQty = async (cartId) => {
-  try {
-    const res = await api.put(
-      `/cart/increase/${cartId}`,
-      {},
-      authHeader()
-    );
-    return res.data;
-  } catch (error) {
-    handleError(error, "Failed to increase quantity");
-  }
+  return await axios.put(`${import.meta.env.VITE_API_URL}/cart/increase/${cartId}`,
+    {},
+    authHeader,
+  );
 };
 
 // ➖ Decrease quantity
 export const decreaseQty = async (cartId) => {
-  try {
-    const res = await api.put(
-      `/cart/decrease/${cartId}`,
-      {},
-      authHeader()
-    );
-    return res.data;
-  } catch (error) {
-    handleError(error, "Failed to decrease quantity");
-  }
+  return await axios.put(`${import.meta.env.VITE_API_URL}/cart/decrease/${cartId}`,
+     {},
+    authHeader,
+  );
 };
 
 // ❌ Remove item from cart
 export const removeItem = async (cartId) => {
-  try {
-    const res = await api.delete(
-      `/cart/${cartId}`,
-      authHeader()
-    );
-    toast.success("Item removed from cart");
-    return res.data;
-  } catch (error) {
-    handleError(error, "Failed to remove item");
-  }
+  return await axios.delete(`${import.meta.env.VITE_API_URL}/cart/${cartId}`,
+    authHeader
+  );
 };
