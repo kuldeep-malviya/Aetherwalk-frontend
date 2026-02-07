@@ -13,7 +13,7 @@ const Navbar = () => {
   const getdetailsCart = async () => {
     try {
       const res = await getCart()
-      setCart(res.data)
+      setCart(res.data || [])
     } catch (error) {
       console.log(error)
     }
@@ -21,7 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     getdetailsCart()
 
-  })
+  },[])
   const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -94,7 +94,7 @@ const Navbar = () => {
 
           <Link to="/cart" className="cart-icon">
             <FaShoppingCart className="cart-icon-svg" style={{ position: "relative", top: "-10px" ,color:"black",fontSize:"22px"}} />
-            {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
+         {(cart || []).length > 0 && <span className="cart-badge">{cart.length}</span>}
           </Link>
 
           {/* Mobile menu button */}
