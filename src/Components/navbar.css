@@ -285,20 +285,6 @@ op:px
   justify-content: space-between;
   padding: 10px 20px;
 }
-.nav-links li a::after {
-  content: "";
-  width: 0;
-  height: 2px;
-  background: #0d6efd;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  transition: 0.3s;
-}
-
-.nav-links li a:hover::after {
-  width: 100%;
-}
 
 /* Nav links */
 .nav-links {
