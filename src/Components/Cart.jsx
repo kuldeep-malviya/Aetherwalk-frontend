@@ -16,8 +16,8 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {
-    const res = await getCart();
-    setCart(res);
+    const data = await getCart();
+    setCart(data);
   };
 
   const validCart = cart.filter(item => item.productId);
