@@ -61,7 +61,7 @@ const Navbar = () => {
         <Link to="/" className="nav-logo">
           <img className="navbar-logo" src={Navlogo} alt="logo" />
         </Link>
-
+        
         {/* Nav Links */}
         <ul className={`nav-links ${open ? "active" : ""}`}>
           <li>

@@ -308,6 +308,7 @@ op:px
 
 /* Mobile menu */
 .menu-btn {
+  
   display: none;
   background: none;
   border: none;
@@ -336,6 +337,8 @@ op:px
   }
 
   .menu-btn {
+    margin-left: 20px;
+  margin-bottom: 10px;
     display: block;
     cursor: pointer;
   }
