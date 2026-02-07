@@ -1,53 +1,29 @@
-import axios from "axios";
+import API from "./api";
+import { toast } from "react-toastify";
 
-const token = localStorage.getItem("token");
-
-const authHeader = {
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-};
-
-// 🛒 Add item to cart
 export const addToCart = async (productId) => {
- const res =   await axios.post(`${import.meta.env.VITE_API_URL}/cart/add`, {
-    productId,
-    quantity: 1,
-    
-  },
-authHeader);
-if(res.status === 200){
-  toast.success("item successfully add in cart")
-}
-return res
+  const res = await API.post("/cart/add", { productId });
+  toast.success("Item added to cart");
+  return res.data;
 };
 
-// Existing functions
 export const getCart = async () => {
-  return await axios.get(`${import.meta.env.VITE_API_URL}/cart`,
-    authHeader,
-  );
+  const res = await API.get("/cart");
+  return res.data;
 };
 
-// ➕ Increase quantity
 export const increaseQty = async (cartId) => {
-  return await axios.put(`${import.meta.env.VITE_API_URL}/cart/increase/${cartId}`,
-    {},
-    authHeader,
-  );
+  const res = await API.put(`/cart/increase/${cartId}`);
+  return res.data;
 };
 
-// ➖ Decrease quantity
 export const decreaseQty = async (cartId) => {
-  return await axios.put(`${import.meta.env.VITE_API_URL}/cart/decrease/${cartId}`,
-     {},
-    authHeader,
-  );
+  const res = await API.put(`/cart/decrease/${cartId}`);
+  return res.data;
 };
 
-// ❌ Remove item from cart
 export const removeItem = async (cartId) => {
-  return await axios.delete(`${import.meta.env.VITE_API_URL}/cart/${cartId}`,
-    authHeader
-  );
+  const res = await API.delete(`/cart/${cartId}`);
+  toast.success("Item removed");
+  return res.data;
 };
