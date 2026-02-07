@@ -1,13 +1,16 @@
 import React from "react";
 import axios from "axios"
+import { useContext } from "react";
 import { LogOut, User, Mail, Shield, Calendar, Package, Heart } from "lucide-react";
+import { AuthContext } from "../store/AuthContext";
 
 
-const UserInfo = ({ email = "user101@example.com", username = "user101" }) => {
- const logout = async () => {
+const UserInfo = ({ email = "user101@example.com", username = "user" }) => {
+  const { user } = useContext(AuthContext);
+  const logout = async () => {
   try {
     await axios.post(
-      "http://localhost:4000/auth/logout",
+      `${import.meta.env.VITE_API_URL}/auth/logout`,
       {},
       {
         headers: {
@@ -43,13 +46,13 @@ const UserInfo = ({ email = "user101@example.com", username = "user101" }) => {
           style={{ bottom: "-55px" }}
         >
           <div
-            className="rounded-circle overflow-hidden border border-4 border-white shadow"
+            className="rounded-circle my-2 overflow-hidden border border-4 border-white shadow"
             style={{ width: "110px", height: "110px" }}
           >
             <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80"
+              src="https://static.vecteezy.com/system/resources/thumbnails/022/014/184/small/user-icon-member-login-isolated-vector.jpg"
               alt="User avatar"
-              className="w-100 h-100 object-fit-cover"
+              className="w-100  h-100 object-fit-cover"
             />
           </div>
         </div>
@@ -57,7 +60,7 @@ const UserInfo = ({ email = "user101@example.com", username = "user101" }) => {
 
       {/* Card Body */}
       <div className="card-body pt-5 text-center px-4 pb-4">
-        <h2 className="card-title mb-1 fw-bold text-dark">{username}</h2>
+        <h2 className="card-title mb-1 fw-bold text-dark">{user.email}</h2>
         <p className="text-warning fw-medium mb-4">Premium Member</p>
 
         {/* Quick Stats */}
@@ -85,8 +88,8 @@ const UserInfo = ({ email = "user101@example.com", username = "user101" }) => {
         {/* User Details */}
         <div className="list-group list-group-flush mb-4 text-start">
           {[ 
-            { icon: <User size={22} className="text-warning" />, label: "Full Name", value: `Alexa ${username.replace("user","")}` },
-            { icon: <Mail size={22} className="text-warning" />, label: "Email", value: email },
+            { icon: <User size={22} className="text-warning" />, label: "Full Name", value: ` ${username.replace("user","")}` },
+            { icon: <Mail size={22} className="text-warning" />, label: "Email", value: `${user.email}` },
             { icon: <Shield size={22} className="text-warning" />, label: "Password", value: "••••••••••••" },
             { icon: <Calendar size={22} className="text-warning" />, label: "Joined", value: "March 15, 2024" }
           ].map((item, idx) => (
@@ -105,17 +108,9 @@ const UserInfo = ({ email = "user101@example.com", username = "user101" }) => {
 
         {/* Action Buttons */}
         <div className="d-grid gap-3">
-          <button className="btn btn-warning text-white fw-medium d-flex align-items-center justify-content-center gap-2 py-3 hover-shadow">
-            <Package size={20} />
-            View Order History
-          </button>
+         
 
-          <button className="btn btn-outline-warning fw-medium d-flex align-items-center justify-content-center gap-2 py-3 hover-shadow">
-            <Heart size={20} />
-            My Wishlist
-          </button>
-
-          <button onClick={logout} className="btn btn-outline-secondary fw-medium d-flex align-items-center justify-content-center gap-2 py-3 hover-shadow">
+          <button onClick={logout} className="btn mb-5 btn-outline-secondary fw-medium d-flex align-items-center justify-content-center gap-2 py-3 hover-shadow">
             <LogOut size={20} />
             Log Out
           </button>
