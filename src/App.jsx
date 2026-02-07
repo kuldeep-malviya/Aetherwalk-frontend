@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route,Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css"
 
 import Navbar from "./Components/Navbar";
@@ -16,7 +16,7 @@ import ScrollToTop from "./Components/ScrollToTop";
 import Duplicat from "./Components/Duplicat";
 import AllProducts from "./Components/AllProducts";
 import ProtectedRoute from "./store/ProtectedRoute";
-
+import "react-toastify/dist/ReactToastify.css";
 import DataProvider from "./store/AppContext";
 import AuthProvider from "./store/AuthContext";
 import { ToastContainer } from "react-toastify";
@@ -39,7 +39,13 @@ function App() {
           {CartAnime && <CartAnimation />}
           <ScrollToTop />
 
-          <ToastContainer  position="top-right"  autoClose={3000} pauseOnHover="true" draggable="true" />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            pauseOnHover={true}
+            draggable={true}
+          />
+
           <Routes>
             {/* ROOT DECIDER */}
             {/* <Route path="/" element={<Navigate to="/login" replace />} /> */}
@@ -51,7 +57,7 @@ function App() {
             <Route
               path="/"
               element={
-                  <Duplicat setCartAnime={setCartAnime} />
+                <Duplicat setCartAnime={setCartAnime} />
               }
             />
 
@@ -94,9 +100,9 @@ function App() {
           <Footer />
         </BrowserRouter>
       </DataProvider>
-      
+
     </AuthProvider>
-    
+
   );
 }
 
